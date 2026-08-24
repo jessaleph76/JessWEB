@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgue - DDH Corp.</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Share+Tech+Mono&family=VT323&family=Creepster&family=Black+Ops+One&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none !important;
+        }
+        
+        :root {
+            --blood-red: #8b0000;
+            --dark-red: #4a0000;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --stamp-red: #cc0000;
+            --warning-yellow: #ffcc00;
+            --ice-blue: #00ccff;
+            --cold-gray: #4a6a7a;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+            font-family: 'Share Tech Mono', monospace;
+            color: #d4d4d4;
+            padding: 0;
+            padding-top: 80px;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+       .custom-cursor {
+            position: fixed;
+            width: 35px;
+            height: 35px;
+            pointer-events: none;
+            z-index: 10003;
+            transition: transform 0.05s;
+            filter: drop-shadow(0 0 10px rgba(255,0,0,0.8));
+        }
+        
+        .custom-cursor::before {
+            content: '🔪';
+            position: absolute;
+            font-size: 30px;
+            transform: rotate(-45deg);
+        }
+        
+       .cursor-trail {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background-color: #ff0000;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10002;
+            animation: fadeOut 0.3s forwards;
+            box-shadow: 0 0 10px #ff0000;
+        }
+        
+        @keyframes fadeOut {
+            to { opacity: 0; transform: scale(0); }
+        }
+        
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 998;
+            animation: floatParticle linear infinite;
+        }
+        
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        .top-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #0a0a0a;
+            border-bottom: 2px solid #1a3a4a;
+            z-index: 9990;
+            height: 60px;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            height: 100%;
+        }
+        
+        .hamburger-btn {
+            background: none;
+            border: none;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: #00ccff;
+            transition: all 0.3s;
+            box-shadow: 0 0 5px rgba(0,204,255,0.5);
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'VT323', monospace;
+            font-size: 24px;
+            color: #e0e0e0;
+            letter-spacing: 2px;
+        }
+        
+        .nav-logo {
+            font-size: 28px;
+            animation: pulse 2s infinite;
+        }
+        
+        .nav-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #00ccff;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 10px #00ccff;
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: #1a1a1a;
+            border-right: 3px solid #00ccff;
+            z-index: 9999;
+            transition: left 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sidebar.active {
+            left: 0;
+        }
+        
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 2px solid #444;
+            background-color: #0a0a0a;
+        }
+        
+        .sidebar-header h3 {
+            font-family: 'VT323', monospace;
+            color: #00ccff;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .close-sidebar {
+            background: none;
+            border: 1px solid #00ccff;
+            color: #00ccff;
+            font-size: 20px;
+            padding: 5px 10px;
+        }
+        
+        .sidebar-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #000;
+            border: 1px solid #444;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .sidebar-link:hover {
+            border-color: #00ccff;
+            transform: translateX(10px);
+        }
+        
+        .sidebar-link.active {
+            border-color: #00ccff;
+            background-color: #0a1a2a;
+        }
+        
+        .sidebar-link.danger-link {
+            border-color: #ff0000;
+        }
+        
+        .sidebar-icon {
+            font-size: 24px;
+        }
+        
+        .sidebar-text {
+            display: block;
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        .sidebar-desc {
+            display: block;
+            color: #888;
+            font-size: 12px;
+        }
+        
+        .sidebar-footer {
+            padding: 20px;
+            border-top: 2px solid #444;
+            background-color: #0a0a0a;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 9998;
+            display: none;
+        }
+        
+        .sidebar-overlay.active {
+            display: block;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #1a1a1a;
+            border: 3px solid #1a3a4a;
+            box-shadow: 0 0 20px rgba(0,204,255,0.3);
+            position: relative;
+            z-index: 2;
+            padding: 30px;
+        }
+        
+        .classification-banner {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #1a3a4a;
+            color: white;
+            padding: 10px 20px;
+            font-family: 'VT323', monospace;
+            font-size: 24px;
+            letter-spacing: 3px;
+            z-index: 10;
+            border: 2px solid #00ccff;
+            text-align: center;
+            width: 80%;
+        }
+        
+        .page-header {
+            border-bottom: 3px double #1a3a4a;
+            padding: 70px 0 25px 0;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .page-title {
+            font-family: 'VT323', monospace;
+            font-size: 48px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+            text-shadow: 0 0 15px rgba(0,204,255,0.5);
+        }
+        
+        .page-subtitle {
+            font-size: 20px;
+            letter-spacing: 2px;
+            color: #bbb;
+        }
+        
+        .morgue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .specimen-card {
+            background-color: #0a0a0a;
+            border: 2px solid #1a3a4a;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .specimen-card:hover {
+            border-color: #00ccff;
+            box-shadow: 0 0 30px rgba(0,204,255,0.3);
+        }
+        
+        .specimen-frame {
+            width: 100%;
+            height: 250px;
+            background-color: #111;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 2px solid #1a3a4a;
+        }
+        
+        .specimen-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(50%) brightness(0.8);
+            transition: all 0.5s;
+        }
+        
+        .specimen-card:hover .specimen-frame img {
+            filter: grayscale(0%) brightness(1);
+        }
+        
+        .specimen-placeholder {
+            color: #4a6a7a;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .specimen-info {
+            padding: 20px;
+        }
+        
+        .specimen-id {
+            color: #00ccff;
+            font-family: 'VT323', monospace;
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .specimen-details {
+            color: #888;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+        
+        .specimen-details span {
+            color: #aaa;
+            display: block;
+            margin: 3px 0;
+        }
+        
+        .specimen-status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            z-index: 5;
+        }
+        
+        .status-active {
+            background-color: #1a0000;
+            border: 1px solid #ff0000;
+            color: #ff0000;
+        }
+        
+        .status-stored {
+            background-color: #0a1a2a;
+            border: 1px solid #00ccff;
+            color: #00ccff;
+        }
+        
+        .status-examined {
+            background-color: #1a1a00;
+            border: 1px solid #ffcc00;
+            color: #ffcc00;
+        }
+        
+        .specimen-tag {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0,0,0,0.8);
+            color: #00ccff;
+            padding: 5px 10px;
+            font-size: 10px;
+            border: 1px solid #1a3a4a;
+            z-index: 5;
+        }
+        
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .search-input {
+            flex: 1;
+            background-color: #000;
+            border: 2px solid #1a3a4a;
+            color: #fff;
+            padding: 15px 20px;
+            font-size: 16px;
+            font-family: 'Share Tech Mono', monospace;
+            letter-spacing: 1px;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #00ccff;
+            box-shadow: 0 0 15px rgba(0,204,255,0.3);
+        }
+        
+        .search-btn {
+            background-color: #0a1a2a;
+            border: 2px solid #00ccff;
+            color: #00ccff;
+            padding: 15px 25px;
+            font-size: 16px;
+            font-family: 'Share Tech Mono', monospace;
+            letter-spacing: 1px;
+        }
+        
+        .search-btn:hover {
+            background-color: #00ccff;
+            color: #000;
+        }
+        
+        /* LIGHTBOX */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.95);
+            z-index: 10001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 80vh;
+            position: relative;
+        }
+        
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            border: 3px solid #00ccff;
+            box-shadow: 0 0 50px rgba(0,204,255,0.5);
+            object-fit: contain;
+        }
+        
+        .lightbox-caption {
+            text-align: center;
+            color: #00ccff;
+            font-family: 'VT323', monospace;
+            font-size: 24px;
+            margin-top: 15px;
+            letter-spacing: 2px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 2px solid #ff0000;
+            color: #ff0000;
+            font-size: 30px;
+            padding: 10px 20px;
+            cursor: none;
+            z-index: 10002;
+        }
+        
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: 2px solid #00ccff;
+            color: #00ccff;
+            font-size: 40px;
+            padding: 15px 25px;
+            cursor: none;
+            z-index: 10002;
+        }
+        
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+        
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #888;
+            font-size: 14px;
+            letter-spacing: 2px;
+            z-index: 10002;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            .page-title { font-size: 32px; }
+            .morgue-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="custom-cursor" id="customCursor"></div>
+    <div id="particles-container"></div>
+    
+    <nav class="top-navbar">
+        <div class="nav-container">
+            <button class="hamburger-btn" onclick="toggleSidebar()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <div class="nav-brand">
+                <span class="nav-logo">☣️</span>
+                <span>DDH Corp.</span>
+            </div>
+            <div class="nav-status">
+                <span class="status-dot"></span>
+                <span>TEMPERATURA: 4°C</span>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>ÍNDICE DE NAVEGACIÓN</h3>
+            <button class="close-sidebar" onclick="toggleSidebar()">✕</button>
+        </div>
+        <div class="sidebar-content">
+            <a href="Lobby.html" class="sidebar-link">
+                <span class="sidebar-icon">🏥</span>
+                <div>
+                    <span class="sidebar-text">Lobby Principal</span>
+                    <span class="sidebar-desc">Área de espera</span>
+                </div>
+            </a>
+            <a href="Expediente DDH.html" class="sidebar-link danger-link">
+                <span class="sidebar-icon">⚠️</span>
+                <div>
+                    <span class="sidebar-text">No Tocar</span>
+                    <span class="sidebar-desc">Contenido clasificado</span>
+                </div>
+            </a>
+            <a href="ArtGallery.html" class="sidebar-link">
+                <span class="sidebar-icon">🎨</span>
+                <div>
+                    <span class="sidebar-text">Galería de Arte</span>
+                    <span class="sidebar-desc">Exposiciones</span>
+                </div>
+            </a>
+            <a href="Morgue.html" class="sidebar-link active">
+                <span class="sidebar-icon">☠️</span>
+                <div>
+                    <span class="sidebar-text">Morgue</span>
+                    <span class="sidebar-desc">Archivo de especímenes</span>
+                </div>
+            </a>
+            <a href="ExpedienteClinico.html" class="sidebar-link">
+                <span class="sidebar-icon">📁</span>
+                <div>
+                    <span class="sidebar-text">Expediente Clínico</span>
+                    <span class="sidebar-desc">Registros médicos</span>
+                </div>
+            </a>
+        </div>
+        <div class="sidebar-footer">
+            <p>NIVEL DE ACCESO: <span style="color: #00ccff;">10</span></p>
+            <p>© 2026 DDH Corp.</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="classification-banner">ARCHIVO DE ESPECÍMENES</div>
+        
+        <div class="page-header">
+            <div class="page-title">MORGUE</div>
+            <div class="page-subtitle">Registro de Especímenes y Evidencias</div>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" class="search-input" id="searchInput" placeholder="Buscar espécimen por ID, tipo o fecha..." onkeyup="searchSpecimens()">
+            <button class="search-btn" onclick="searchSpecimens()">🔍 BUSCAR</button>
+        </div>
+        
+        <div class="morgue-grid" id="morgueGrid">
+            <!-- Espécimen 1 -->
+            <div class="specimen-card" data-search="ESP-001 Corazón de Dengel">
+                <div class="specimen-frame" onclick="openSpecimen(this)">
+                    <span class="specimen-status status-examined">EXAMINADO</span>
+                    <span class="specimen-tag">CAJÓN 01-A</span>
+                    <img src="[URL_IMAGEN_1]" alt="Corazón de Dengel" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <div class="specimen-info">
+                    <div class="specimen-id">ESP-001</div>
+                    <div class="specimen-details">
+                        <span>Tipo: Corazón de Dengel</span>
+                        <span>Origen: [DESCONOCIDO]</span>
+                        <span>Fecha de ingreso: 24/09/2035</span>
+                        <span>Estado: Conservado en formol</span>
+                        <span>Notas: De las pocas veces que consiguen algo de un Dengel</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Espécimen 2 -->
+            <div class="specimen-card" data-search="ESP-002 cerebro completo">
+                <div class="specimen-frame" onclick="openSpecimen(this)">
+                    <span class="specimen-status status-active">ACTIVO</span>
+                    <span class="specimen-tag">CAJÓN 02-B</span>
+                    <img src="[URL_IMAGEN_2]" alt="Cerebro completo" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <div class="specimen-info">
+                    <div class="specimen-id">ESP-002</div>
+                    <div class="specimen-details">
+                        <span>Tipo: Cerebro completo</span>
+                        <span>Origen: [HUMANO]</span>
+                        <span>Fecha de ingreso: 26/03/1980</span>
+                        <span>Estado: En estudio activo</span>
+                        <span>Notas: Tenemos esto y no se donde enviarlo</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Espécimen 3 -->
+            <div class="specimen-card" data-search="ESP-003 mano diseccionada de demonio">
+                <div class="specimen-frame" onclick="openSpecimen(this)">
+                    <span class="specimen-status status-stored">ALMACENADO</span>
+                    <span class="specimen-tag">CAJÓN 03-C</span>
+                    <img src="[URL_IMAGEN_3]" alt="Mano diseccionada de demonio" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <div class="specimen-info">
+                    <div class="specimen-id">ESP-003</div>
+                    <div class="specimen-details">
+                        <span>Tipo: Mano diseccionada de demonio</span>
+                        <span>Origen: [DEMONIACO]</span>
+                        <span>Fecha de ingreso: 15/09/2005</span>
+                        <span>Estado: Criopreservado</span>
+                        <span>Notas: ¿Es necesario?</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Espécimen 4 -->
+            <div class="specimen-card" data-search="ESP-004 ojo nervio optico">
+                <div class="specimen-frame" onclick="openSpecimen(this)">
+                    <span class="specimen-status status-examined">EXAMINADO</span>
+                    <span class="specimen-tag">CAJÓN 04-D</span>
+                    <img src="[URL_IMAGEN_4]" alt="Ojo con nervio óptico" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <div class="specimen-info">
+                    <div class="specimen-id">ESP-004</div>
+                    <div class="specimen-details">
+                        <span>Tipo: Ojo con nervio óptico</span>
+                        <span>Origen: [CENSURADO]</span>
+                        <span>Fecha de ingreso: [CENSURADO]</span>
+                        <span>Estado: Conservado en formol</span>
+                        <span>Notas: Hola Dr. Graves, ¿Como esta?</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        <button class="lightbox-prev" onclick="changeImage(-1)">◄</button>
+        <div class="lightbox-content">
+            <img src="" alt="Visor de imagen" id="lightboxImage">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+        <button class="lightbox-next" onclick="changeImage(1)">►</button>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+    
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : 'auto';
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('sidebar').classList.remove('active');
+                document.getElementById('sidebarOverlay').classList.remove('active');
+                closeLightbox();
+                document.body.style.overflow = 'auto';
+            }
+            if (e.key === 'ArrowLeft' && document.getElementById('lightbox').classList.contains('active')) {
+                changeImage(-1);
+            }
+            if (e.key === 'ArrowRight' && document.getElementById('lightbox').classList.contains('active')) {
+                changeImage(1);
+            }
+        });
+        
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('sidebar').classList.remove('active');
+                document.getElementById('sidebarOverlay').classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        const customCursor = document.getElementById('customCursor');
+        document.addEventListener('mousemove', (e) => {
+            customCursor.style.left = (e.clientX - 17) + 'px';
+            customCursor.style.top = (e.clientY - 17) + 'px';
+            
+            if (Math.random() > 0.5) {
+                const trail = document.createElement('div');
+                trail.classList.add('cursor-trail');
+                trail.style.left = (e.clientX - 4) + 'px';
+                trail.style.top = (e.clientY - 4) + 'px';
+                document.body.appendChild(trail);
+                setTimeout(() => trail.remove(), 300);
+            }
+        });
+        
+        function createParticles() {
+            const container = document.getElementById('particles-container');
+            const symbols = ['❄️', '☠️', '🦴', '🧬', '⚰️', '💀'];
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+        
+        function searchSpecimens() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const cards = document.querySelectorAll('.specimen-card');
+            cards.forEach(card => {
+                const searchData = card.dataset.search;
+                card.style.display = searchData.includes(filter) ? 'block' : 'none';
+            });
+        }
+        
+        // LIGHTBOX
+        let lightboxImages = [];
+        let currentImageIndex = 0;
+        
+        function openLightbox(imageSrc, caption) {
+            document.getElementById('lightboxImage').src = imageSrc;
+            document.getElementById('lightboxCaption').textContent = caption;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            updateLightboxCounter();
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) currentImageIndex = lightboxImages.length - 1;
+            if (currentImageIndex >= lightboxImages.length) currentImageIndex = 0;
+            
+            const imageData = lightboxImages[currentImageIndex];
+            document.getElementById('lightboxImage').src = imageData.src;
+            document.getElementById('lightboxCaption').textContent = imageData.caption;
+            updateLightboxCounter();
+        }
+        
+        function updateLightboxCounter() {
+            const counter = document.getElementById('lightboxCounter');
+            counter.textContent = lightboxImages.length > 1 ? `${currentImageIndex + 1} / ${lightboxImages.length}` : '';
+        }
+        
+        function openSpecimen(element) {
+            const img = element.querySelector('img');
+            const specimenId = element.closest('.specimen-card').querySelector('.specimen-id').textContent;
+            const specimenType = element.closest('.specimen-card').querySelector('.specimen-details span').textContent;
+            
+            if (img && img.src) {
+                lightboxImages = [];
+                const allImages = document.querySelectorAll('.specimen-frame img');
+                allImages.forEach((image, index) => {
+                    lightboxImages.push({
+                        src: image.src,
+                        caption: image.closest('.specimen-card').querySelector('.specimen-id').textContent
+                    });
+                    if (image === img) currentImageIndex = index;
+                });
+                openLightbox(img.src, specimenId + ' - ' + specimenType);
+            }
+        }
+    </script>
+</body>
+</html>
