@@ -2,10 +2,206 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Galería de Arte - DDH Corp.</title>
     
     <style>
+                @media (max-width: 768px) {
+            .sidebar-link,
+            .btn,
+            .social-btn,
+            .filter-btn {
+                min-height: 44px; /* Tamaño mínimo para dedos */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+                img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            overflow-x: hidden;
+        }
+                /* ============================================
+           AJUSTES ESPECÍFICOS PARA MÓVIL
+           ============================================ */
+        @media (max-width: 768px) {
+            /* Contenedor principal */
+            .container {
+                padding: 15px;
+                margin: 10px;
+                border-width: 2px;
+            }
+            
+            /* Banner clasificado */
+            .classification-banner {
+                font-size: 14px;
+                width: 95%;
+                padding: 8px 10px;
+                top: 10px;
+            }
+            
+            .classification-stamp {
+                display: none; /* Ocultar sello en móvil */
+            }
+            
+            /* Encabezado */
+            .page-header {
+                padding: 50px 0 15px 0;
+            }
+            
+            .page-title {
+                font-size: 28px;
+                letter-spacing: 2px;
+            }
+            
+            .page-subtitle {
+                font-size: 14px;
+            }
+            
+            /* Secciones */
+            .section {
+                padding: 15px;
+                margin: 15px 0;
+            }
+            
+            .section-title {
+                font-size: 20px;
+                padding: 8px 12px;
+            }
+            
+            .section-text {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+            
+            /* Botones */
+            .btn {
+                padding: 10px 20px;
+                font-size: 18px;
+            }
+            
+            /* Sidebar */
+            .sidebar {
+                width: 280px;
+                left: -280px;
+            }
+            
+            .sidebar-link {
+                padding: 12px;
+                margin-bottom: 8px;
+            }
+            
+            .sidebar-text {
+                font-size: 14px;
+            }
+            
+            .sidebar-desc {
+                font-size: 11px;
+            }
+            
+            /* Navbar */
+            .nav-brand span:last-child {
+                font-size: 18px;
+            }
+            
+            .nav-status {
+                display: none;
+            }
+            
+            /* Lightbox */
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                font-size: 20px;
+                padding: 8px 15px;
+            }
+            
+            .lightbox-prev,
+            .lightbox-next {
+                font-size: 24px;
+                padding: 10px 15px;
+            }
+            
+            .lightbox-caption {
+                font-size: 18px;
+            }
+            
+            /* Cursor personalizado */
+            .custom-cursor,
+            .cursor-trail {
+                display: none !important; /* Ocultar cursor en móvil */
+            }
+            
+            /* Restaurar cursor normal en móvil */
+            * {
+                cursor: auto !important;
+            }
+            
+            /* Texto screamer */
+            .screamer-text {
+                font-size: 50px;
+                letter-spacing: 4px;
+            }
+            
+            /* Botón sospechoso */
+            .suspicious-btn {
+                bottom: 10px;
+                left: 10px;
+                font-size: 8px;
+                padding: 6px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Ajustes para pantallas muy pequeñas */
+            .page-title {
+                font-size: 22px;
+            }
+            
+            .page-subtitle {
+                font-size: 12px;
+            }
+            
+            .section-title {
+                font-size: 16px;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+            
+            .container {
+                padding: 10px;
+                margin: 5px;
+            }
+        }
+                @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr; /* Una columna */
+                gap: 15px;
+            }
+            
+            .artwork-frame {
+                height: 200px;
+            }
+            
+            .artwork-title {
+                font-size: 18px;
+            }
+            
+            .gallery-filters {
+                gap: 5px;
+            }
+            
+            .filter-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+        }
         @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Share+Tech+Mono&family=VT323&family=Creepster&family=Black+Ops+One&display=swap');
         
         * {
