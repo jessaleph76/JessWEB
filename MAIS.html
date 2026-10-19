@@ -707,7 +707,54 @@
         .back-to-top:hover {
             background: var(--primary);
         }
+/* ============ LOGOS INSTITUCIONALES ============ */
+.logo-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
 
+.logo-img-wrapper {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    background: var(--bg-alt);
+    border-radius: 10px;
+    padding: 1rem;
+    transition: background 0.3s;
+}
+
+.inst-logo {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Fallback cuando no carga la imagen */
+.logo-img-wrapper.no-logo::before {
+    content: '🏛️';
+    font-size: 2.5rem;
+    opacity: 0.5;
+}
+
+.logo-img-wrapper.no-logo {
+    border: 2px dashed var(--border);
+}
+
+/* Ajuste móvil */
+@media (max-width: 480px) {
+    .logo-img-wrapper {
+        height: 100px;
+    }
+}
         /* ============================================
            RESPONSIVE - TABLET (hasta 1024px)
         ============================================ */
@@ -1015,16 +1062,16 @@
         <div class="hero-content">
             <span class="badge">TRABAJO DE INVESTIGACIÓN · UES · CICLO II-2026</span>
             <h1>Modelo de Atención en Salud Integral en El Salvador</h1>
-            <p class="subtitle">Análisis de la implementación local, retos y mejoras propuestas</p>
+            <p class="subtitle">Análisis de la implementación local, retos y propuestas de mejoras</p>
             <div class="meta">
                 <span>🎓 Universidad de El Salvador</span>
                 <span>🏛️ Facultad de Medicina</span>
-                <span>📚 Estrategias de la APS</span>
-                <span>👥 Grupo B07</span>
+                <span>📚 Estrategias de la atención primaria en salud</span>
+                <span>👥 Grupo B-07</span>
             </div>
             <div class="hero-buttons">
                 <a href="#que-es" class="btn btn-primary">Explorar Investigación</a>
-                <a href="#conclusion" class="btn btn-secondary">📖 Ver Conclusión</a>
+                <a href="#conclusion" class="btn btn-secondary">Ver Conclusión</a>
             </div>
         </div>
     </header>
@@ -1059,23 +1106,19 @@
                     </div>
                     <div class="info-item">
                         <div class="label">Asignatura</div>
-                        <div class="value">Estrategias de la APS</div>
+                        <div class="value">Estrategias de la atención primaria en salud</div>
                     </div>
                     <div class="info-item">
                         <div class="label">Grupo</div>
-                        <div class="value">B07</div>
+                        <div class="value">B-07</div>
                     </div>
                     <div class="info-item">
-                        <div class="label">Docente Tutor</div>
+                        <div class="label">Docente</div>
                         <div class="value">Dr. Víctor Arturo López</div>
                     </div>
                     <div class="info-item">
                         <div class="label">Ciclo / Año</div>
                         <div class="value">II · 2026</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="label">Ciudad Universitaria</div>
-                        <div class="value">Dr. Fabio Castillo Figueroa</div>
                     </div>
                 </div>
             </div>
@@ -1120,7 +1163,7 @@
     <!-- ============ OBJETIVOS ============ -->
     <section id="objetivos" class="section">
         <div class="container">
-            <h2 class="section-title">Objetivos del Estudio</h2>
+            <h2 class="section-title">Objetivos del Seminario</h2>
             <div class="content-box">
                 <h3>Objetivo General</h3>
                 <p>
@@ -1245,32 +1288,42 @@
 
                 <h3>Instituciones bajo Rectoría del MINSAL</h3>
                 <div class="grid-3" style="margin-top:1rem;">
-                    <div class="card">
-                        <span class="icon">🏥</span>
-                        <h3>ISSS</h3>
-                        <p>Instituto Salvadoreño del Seguro Social</p>
-                    </div>
-                    <div class="card">
-                        <span class="icon">🚑</span>
-                        <h3>FOSALUD</h3>
-                        <p>Fondo Solidario para la Salud</p>
-                    </div>
-                    <div class="card">
-                        <span class="icon">🎖️</span>
-                        <h3>Sanidad Militar</h3>
-                        <p>Servicios de salud de las Fuerzas Armadas</p>
-                    </div>
-                    <div class="card">
-                        <span class="icon">💼</span>
-                        <h3>ISRI</h3>
-                        <p>Instituto Salvadoreño de Rehabilitación Integral</p>
-                    </div>
-                    <div class="card">
-                        <span class="icon">👶</span>
-                        <h3>ISBM</h3>
-                        <p>Instituto Salvadoreño de Bienestar Magisterial</p>
-                    </div>
-                </div>
+    <div class="card logo-card">
+        <div class="logo-img-wrapper">
+            <img src="logos/isss.png" alt="Logo ISSS" class="inst-logo" onerror="this.style.display='none'; this.parentElement.classList.add('no-logo');">
+        </div>
+        <h3>ISSS</h3>
+        <p>Instituto Salvadoreño del Seguro Social</p>
+    </div>
+    <div class="card logo-card">
+        <div class="logo-img-wrapper">
+            <img src="logos/fosalud.png" alt="Logo FOSALUD" class="inst-logo" onerror="this.style.display='none'; this.parentElement.classList.add('no-logo');">
+        </div>
+        <h3>FOSALUD</h3>
+        <p>Fondo Solidario para la Salud</p>
+    </div>
+    <div class="card logo-card">
+        <div class="logo-img-wrapper">
+            <img src="logos/sanidad-militar.png" alt="Logo Sanidad Militar" class="inst-logo" onerror="this.style.display='none'; this.parentElement.classList.add('no-logo');">
+        </div>
+        <h3>Sanidad Militar</h3>
+        <p>Servicios de salud de las Fuerzas Armadas</p>
+    </div>
+    <div class="card logo-card">
+        <div class="logo-img-wrapper">
+            <img src="logos/isri.png" alt="Logo ISRI" class="inst-logo" onerror="this.style.display='none'; this.parentElement.classList.add('no-logo');">
+        </div>
+        <h3>ISRI</h3>
+        <p>Instituto Salvadoreño de Rehabilitación Integral</p>
+    </div>
+    <div class="card logo-card">
+        <div class="logo-img-wrapper">
+            <img src="logos/isbm.png" alt="Logo ISBM" class="inst-logo" onerror="this.style.display='none'; this.parentElement.classList.add('no-logo');">
+        </div>
+        <h3>ISBM</h3>
+        <p>Instituto Salvadoreño de Bienestar Magisterial</p>
+    </div>
+</div>
             </div>
         </div>
     </section>
@@ -1711,7 +1764,7 @@
             <div class="content-box">
                 <ul class="references">
                     <li>
-                        Grupo B07. (2026). <em>Modelo de Atención en Salud Integral en El Salvador: Análisis de la implementación 
+                        Grupo B-07. (2026). <em>Modelo de Atención en Salud Integral en El Salvador: Análisis de la implementación 
                         local, retos y mejoras propuestas</em>. Seminario de Estrategias de la Atención Primaria de Salud. 
                         Universidad de El Salvador, Facultad de Medicina, Escuela de Medicina, Departamento de Salud Comunitaria. 
                         Ciudad Universitaria Dr. Fabio Castillo Figueroa, San Salvador.
@@ -1725,7 +1778,7 @@
     <footer class="footer">
         <p><strong>Modelo de Atención en Salud Integral en El Salvador</strong></p>
         <p>Universidad de El Salvador · Facultad de Medicina · Ciclo II-2026</p>
-        <p>Grupo B07 · Tutor: Dr. Víctor Arturo López</p>
+        <p>Grupo B-07 · Tutor: Dr. Víctor Arturo López</p>
         <p style="margin-top:1rem; opacity:0.7;">© 2026 · Trabajo de Investigación Académica</p>
     </footer>
 
