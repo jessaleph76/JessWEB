@@ -574,80 +574,69 @@
         }
 
         /* ============ GALERÍA ============ */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
 
-        .gallery-item {
-            background: var(--bg-card);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+.gallery-item {
+    background: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
 
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px var(--shadow-hover);
-        }
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--shadow-hover);
+}
 
-        .gallery-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-            background: var(--bg-alt);
-        }
+.gallery-img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+    background: var(--bg-alt);
+}
 
-        .gallery-placeholder {
-            width: 100%;
-            height: 220px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: var(--bg-alt);
-            border: 2px dashed var(--border);
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            text-align: center;
-            padding: 1rem;
-            gap: 0.5rem;
-            overflow-wrap: break-word;
-        }
+.gallery-caption {
+    padding: 1.1rem 1.3rem 1.3rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    border-top: 1px solid var(--border);
+}
 
-        .gallery-placeholder .icon {
-            font-size: 2.5rem;
-            opacity: 0.6;
-        }
+.gallery-caption h4 {
+    color: var(--primary);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+}
 
-        .gallery-placeholder code {
-            font-size: 0.65rem;
-            background: var(--bg-body);
-            padding: 0.3rem;
-            border-radius: 4px;
-            word-break: break-all;
-            max-width: 100%;
-        }
+.gallery-caption p {
+    font-size: 0.87rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+}
 
-        .gallery-caption {
-            padding: 1rem 1.2rem;
-        }
+@media (max-width: 480px) {
+    .gallery-img {
+        height: 200px;
+    }
 
-        .gallery-caption h4 {
-            color: var(--primary);
-            font-size: 0.95rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .gallery-caption p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
+    .gallery-caption {
+        padding: 1rem;
+    }
+}
 
         /* ============ REFERENCIAS ============ */
         .references {
@@ -1619,95 +1608,73 @@
     </section>
 
     <!-- ============ GALERÍA ============ -->
-    <section id="galeria" class="section">
-        <div class="container">
-            <h2 class="section-title">Galería del Proyecto</h2>
-            <p style="margin-bottom:1.5rem; color:var(--text-soft);">
-                Espacio destinado a imágenes relacionadas con la investigación: establecimientos de salud, ECOS, 
-                jornadas médicas, gráficas de datos e infografías del MAIS.
-            </p>
+<section id="galeria" class="section">
+    <div class="container">
+        <h2 class="section-title">Galería del Proyecto</h2>
+        <p style="margin-bottom:1.5rem; color:var(--text-soft);">
+            Espacio destinado a imágenes relacionadas con la investigación: establecimientos de salud, ECOS,
+            jornadas médicas, gráficas de datos e infografías del MAIS.
+        </p>
 
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <span class="icon">🖼️</span>
-                        <strong>Imagen 1</strong>
-                        <span>Reemplaza con:</span>
-                        <code>&lt;img src="imagen1.jpg" class="gallery-img"&gt;</code>
-                    </div>
-                    <div class="gallery-caption">
-                        <h4>Título de la Imagen 1</h4>
-                        <p>Descripción breve de la imagen</p>
-                    </div>
-                </div>
+        <div class="gallery-grid">
 
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <span class="icon">🖼️</span>
-                        <strong>Imagen 2</strong>
-                        <span>Reemplaza con:</span>
-                        <code>&lt;img src="imagen2.jpg" class="gallery-img"&gt;</code>
-                    </div>
-                    <div class="gallery-caption">
-                        <h4>Título de la Imagen 2</h4>
-                        <p>Descripción breve de la imagen</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <span class="icon">🖼️</span>
-                        <strong>Imagen 3</strong>
-                        <span>Reemplaza con:</span>
-                        <code>&lt;img src="imagen3.jpg" class="gallery-img"&gt;</code>
-                    </div>
-                    <div class="gallery-caption">
-                        <h4>Título de la Imagen 3</h4>
-                        <p>Descripción breve de la imagen</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <span class="icon">🖼️</span>
-                        <strong>Imagen 4</strong>
-                        <span>Reemplaza con:</span>
-                        <code>&lt;img src="imagen4.jpg" class="gallery-img"&gt;</code>
-                    </div>
-                    <div class="gallery-caption">
-                        <h4>Título de la Imagen 4</h4>
-                        <p>Descripción breve de la imagen</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <span class="icon">🖼️</span>
-                        <strong>Imagen 5</strong>
-                        <span>Reemplaza con:</span>
-                        <code>&lt;img src="imagen5.jpg" class="gallery-img"&gt;</code>
-                    </div>
-                    <div class="gallery-caption">
-                        <h4>Título de la Imagen 5</h4>
-                        <p>Descripción breve de la imagen</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <span class="icon">🖼️</span>
-                        <strong>Imagen 6</strong>
-                        <span>Reemplaza con:</span>
-                        <code>&lt;img src="imagen6.jpg" class="gallery-img"&gt;</code>
-                    </div>
-                    <div class="gallery-caption">
-                        <h4>Título de la Imagen 6</h4>
-                        <p>Descripción breve de la imagen</p>
-                    </div>
+            <!-- ══════════ IMAGEN 1 ══════════ -->
+            <div class="gallery-item">
+                <img src="PEGA_AQUI_EL_ENLACE_DE_LA_IMAGEN_1" alt="Imagen 1" class="gallery-img">
+                <div class="gallery-caption">
+                    <h4>Título de la Imagen 1</h4>
+                    <p>Descripción breve de la imagen 1</p>
                 </div>
             </div>
+
+            <!-- ══════════ IMAGEN 2 ══════════ -->
+            <div class="gallery-item">
+                <img src="PEGA_AQUI_EL_ENLACE_DE_LA_IMAGEN_2" alt="Imagen 2" class="gallery-img">
+                <div class="gallery-caption">
+                    <h4>Título de la Imagen 2</h4>
+                    <p>Descripción breve de la imagen 2</p>
+                </div>
+            </div>
+
+            <!-- ══════════ IMAGEN 3 ══════════ -->
+            <div class="gallery-item">
+                <img src="PEGA_AQUI_EL_ENLACE_DE_LA_IMAGEN_3" alt="Imagen 3" class="gallery-img">
+                <div class="gallery-caption">
+                    <h4>Título de la Imagen 3</h4>
+                    <p>Descripción breve de la imagen 3</p>
+                </div>
+            </div>
+
+            <!-- ══════════ IMAGEN 4 ══════════ -->
+            <div class="gallery-item">
+                <img src="PEGA_AQUI_EL_ENLACE_DE_LA_IMAGEN_4" alt="Imagen 4" class="gallery-img">
+                <div class="gallery-caption">
+                    <h4>Título de la Imagen 4</h4>
+                    <p>Descripción breve de la imagen 4</p>
+                </div>
+            </div>
+
+            <!-- ══════════ IMAGEN 5 ══════════ -->
+            <div class="gallery-item">
+                <img src="PEGA_AQUI_EL_ENLACE_DE_LA_IMAGEN_5" alt="Imagen 5" class="gallery-img">
+                <div class="gallery-caption">
+                    <h4>Título de la Imagen 5</h4>
+                    <p>Descripción breve de la imagen 5</p>
+                </div>
+            </div>
+
+            <!-- ══════════ IMAGEN 6 ══════════ -->
+            <div class="gallery-item">
+                <img src="PEGA_AQUI_EL_ENLACE_DE_LA_IMAGEN_6" alt="Imagen 6" class="gallery-img">
+                <div class="gallery-caption">
+                    <h4>Título de la Imagen 6</h4>
+                    <p>Descripción breve de la imagen 6</p>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- ============ CONCLUSIONES ============ -->
     <section id="conclusion" class="section alt-bg">
