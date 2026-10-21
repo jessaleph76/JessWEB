@@ -727,18 +727,6 @@
     display: block;
 }
 
-/* Fallback cuando no carga la imagen */
-.logo-img-wrapper.no-logo::before {
-    content: '🏛️';
-    font-size: 2.5rem;
-    opacity: 0.5;
-}
-
-.logo-img-wrapper.no-logo {
-    border: 2px dashed var(--border);
-}
-
-/* Ajuste móvil */
 @media (max-width: 480px) {
     .logo-img-wrapper {
         height: 100px;
@@ -1327,38 +1315,39 @@
                 </p>
 
                 <h3>Instituciones bajo Rectoría del MINSAL</h3>
-       <div class="grid-3" style="margin-top:1rem;">
+      <h3>Instituciones bajo Rectoría del MINSAL</h3>
+<div class="grid-3" style="margin-top:1rem;">
     <div class="card logo-card">
         <div class="logo-img-wrapper">
-            <img src="Images/ISSS.png" alt="Logo ISSS" class="inst-logo" onerror="this.style.display='none'; this.parentElement.classList.add('no-logo');">
+            <img src="Images/ISSS.png" alt="Logo ISSS" class="inst-logo">
         </div>
         <h3>ISSS</h3>
         <p>Instituto Salvadoreño del Seguro Social</p>
     </div>
     <div class="card logo-card">
         <div class="logo-img-wrapper">
-            <img src="Images/Fosalud.png" alt="Logo FOSALUD" class="inst-logo" onerror="this.style.display='none'; this.parentElement.classList.add('no-logo');">
+            <img src="Images/Fosalud.png" alt="Logo FOSALUD" class="inst-logo">
         </div>
         <h3>FOSALUD</h3>
         <p>Fondo Solidario para la Salud</p>
     </div>
     <div class="card logo-card">
         <div class="logo-img-wrapper">
-            <img src="Images/SM.png" alt="Logo Sanidad Militar" class="inst-logo" onerror="this.style.display='none'; this.parentElement.classList.add('no-logo');">
+            <img src="Images/SM.png" alt="Logo Sanidad Militar" class="inst-logo">
         </div>
         <h3>Sanidad Militar</h3>
         <p>Servicios de salud de las Fuerzas Armadas</p>
     </div>
     <div class="card logo-card">
         <div class="logo-img-wrapper">
-            <img src="Images/ISRI.png" alt="Logo ISRI" class="inst-logo" onerror="this.style.display='none'; this.parentElement.classList.add('no-logo');">
+            <img src="Images/ISRI.png" alt="Logo ISRI" class="inst-logo">
         </div>
         <h3>ISRI</h3>
         <p>Instituto Salvadoreño de Rehabilitación Integral</p>
     </div>
     <div class="card logo-card">
         <div class="logo-img-wrapper">
-            <img src="Images/ISBM.png" alt="Logo ISBM" class="inst-logo" onerror="this.style.display='none'; this.parentElement.classList.add('no-logo');">
+            <img src="Images/ISBM.png" alt="Logo ISBM" class="inst-logo">
         </div>
         <h3>ISBM</h3>
         <p>Instituto Salvadoreño de Bienestar Magisterial</p>
