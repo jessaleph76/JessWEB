@@ -574,69 +574,59 @@
         }
 
         /* ============ GALERÍA ============ */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-}
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
 
-.gallery-item {
-    background: var(--bg-card);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px var(--shadow);
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
-}
+        .gallery-item {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
 
-.gallery-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px var(--shadow-hover);
-}
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow-hover);
+        }
 
-.gallery-img {
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
-    display: block;
-    background: var(--bg-alt);
-}
+        .gallery-img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+            background: var(--bg-alt);
+        }
 
-.gallery-caption {
-    padding: 1.1rem 1.3rem 1.3rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    border-top: 1px solid var(--border);
-}
+        .gallery-caption {
+            padding: 1.1rem 1.3rem 1.3rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            border-top: 1px solid var(--border);
+        }
 
-.gallery-caption h4 {
-    color: var(--primary);
-    font-size: 1rem;
-    font-weight: 600;
-    margin: 0;
-    line-height: 1.3;
-}
+        .gallery-caption h4 {
+            color: var(--primary);
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+            line-height: 1.3;
+        }
 
-.gallery-caption p {
-    font-size: 0.87rem;
-    color: var(--text-muted);
-    margin: 0;
-    line-height: 1.5;
-}
-
-@media (max-width: 480px) {
-    .gallery-img {
-        height: 200px;
-    }
-
-    .gallery-caption {
-        padding: 1rem;
-    }
-}
+        .gallery-caption p {
+            font-size: 0.87rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
 
         /* ============ REFERENCIAS ============ */
         .references {
@@ -696,140 +686,154 @@
         .back-to-top:hover {
             background: var(--primary);
         }
-/* ============ LOGOS INSTITUCIONALES ============ */
-.logo-card {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
 
-.logo-img-wrapper {
-    width: 100%;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-    background: var(--bg-alt);
-    border-radius: 10px;
-    padding: 1rem;
-    transition: background 0.3s;
-}
+        /* ============ LOGOS INSTITUCIONALES ============ */
+        .logo-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
 
-.inst-logo {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    display: block;
-}
+        .logo-img-wrapper {
+            width: 100%;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            background: var(--bg-alt);
+            border-radius: 10px;
+            padding: 1rem;
+            transition: background 0.3s;
+        }
 
-@media (max-width: 480px) {
-    .logo-img-wrapper {
-        height: 100px;
-    }
-}
+        .inst-logo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
 
         /* ============ LIGHTBOX ============ */
-.lightbox {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.92);
-    z-index: 9999;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    cursor: zoom-out;
-}
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            cursor: zoom-out;
+        }
 
-.lightbox.open {
-    display: flex;
-    opacity: 1;
-}
+        .lightbox.open {
+            display: flex;
+            opacity: 1;
+        }
 
-.lightbox-img {
-    max-width: 95%;
-    max-height: 92vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-    cursor: default;
-    animation: lightboxZoom 0.25s ease;
-}
+        .lightbox-img {
+            max-width: 95%;
+            max-height: 92vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            cursor: default;
+            animation: lightboxZoom 0.25s ease;
+        }
 
-@keyframes lightboxZoom {
-    from { transform: scale(0.85); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-}
+        @keyframes lightboxZoom {
+            from { transform: scale(0.85); opacity: 0; }
+            to   { transform: scale(1); opacity: 1; }
+        }
 
-.lightbox-close {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(8px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    font-size: 1.4rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s, transform 0.2s;
-    z-index: 10000;
-}
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.2s;
+            z-index: 10000;
+        }
 
-.lightbox-close:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: rotate(90deg) scale(1.1);
-}
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg) scale(1.1);
+        }
 
-/* Cursor de zoom en todas las imágenes clicables */
-.inst-logo,
-.gallery-img,
-.team-group-img {
-    cursor: zoom-in;
-    transition: filter 0.2s;
-}
+        /* Cursor de zoom en todas las imágenes clicables */
+        .inst-logo,
+        .gallery-img,
+        .team-group-img {
+            cursor: zoom-in;
+            transition: filter 0.2s;
+        }
 
-.inst-logo:hover,
-.gallery-img:hover,
-.team-group-img:hover {
-    filter: brightness(1.08);
-}
+        .inst-logo:hover,
+        .gallery-img:hover,
+        .team-group-img:hover {
+            filter: brightness(1.08);
+        }
 
-@media (max-width: 600px) {
-    .lightbox {
-        padding: 1rem;
-    }
+        /* ============ EQUIPO B07 ============ */
+        .team-photo {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow);
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-    .lightbox-img {
-        max-width: 100%;
-        max-height: 85vh;
-    }
+        .team-group-img {
+            width: 100%;
+            max-height: 520px;
+            object-fit: cover;
+            display: block;
+            background: var(--bg-alt);
+        }
 
-    .lightbox-close {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-        top: 12px;
-        right: 12px;
-    }
-}
+        .team-photo-caption {
+            padding: 1.5rem 1.8rem 1.8rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .team-photo-caption h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .team-photo-caption p {
+            font-size: 0.92rem;
+            color: var(--text-soft);
+            margin: 0;
+            line-height: 1.6;
+        }
+
         /* ============================================
            RESPONSIVE - TABLET (hasta 1024px)
         ============================================ */
@@ -864,6 +868,19 @@
                 display: flex;
             }
 
+            .nav-container {
+                justify-content: flex-start;
+            }
+
+            .logo {
+                margin-right: auto;
+            }
+
+            .theme-toggle,
+            .menu-toggle {
+                margin-left: 0.4rem;
+            }
+
             .nav-menu {
                 display: none;
                 position: absolute;
@@ -894,9 +911,6 @@
 
             .nav-menu li:last-child {
                 border-bottom: none;
-                padding-top: 1rem;
-                display: flex;
-                justify-content: center;
             }
 
             .nav-menu a {
@@ -967,57 +981,6 @@
             }
         }
 
-/* ============ EQUIPO B07 ============ */
-.team-photo {
-    background: var(--bg-card);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px var(--shadow);
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.team-group-img {
-    width: 100%;
-    max-height: 520px;
-    object-fit: cover;
-    display: block;
-    background: var(--bg-alt);
-}
-
-.team-photo-caption {
-    padding: 1.5rem 1.8rem 1.8rem;
-    border-top: 1px solid var(--border);
-    text-align: center;
-}
-
-.team-photo-caption h4 {
-    color: var(--primary);
-    font-size: 1.1rem;
-    margin-bottom: 0.6rem;
-}
-
-.team-photo-caption p {
-    font-size: 0.92rem;
-    color: var(--text-soft);
-    margin: 0;
-    line-height: 1.6;
-}
-
-@media (max-width: 600px) {
-    .team-group-img {
-        max-height: 300px;
-    }
-
-    .team-photo-caption {
-        padding: 1.2rem;
-    }
-
-    .team-photo-caption h4 {
-        font-size: 1rem;
-    }
-}
-        
         /* ============================================
            RESPONSIVE - MÓVIL PEQUEÑO (hasta 480px)
         ============================================ */
@@ -1066,9 +1029,16 @@
                 grid-template-columns: 1fr;
             }
 
-            .gallery-img,
-            .gallery-placeholder {
+            .gallery-img {
                 height: 200px;
+            }
+
+            .gallery-caption {
+                padding: 1rem;
+            }
+
+            .logo-img-wrapper {
+                height: 100px;
             }
 
             .timeline {
@@ -1103,6 +1073,35 @@
                 bottom: 15px;
                 right: 15px;
                 font-size: 1.2rem;
+            }
+
+            .team-group-img {
+                max-height: 300px;
+            }
+
+            .team-photo-caption {
+                padding: 1.2rem;
+            }
+
+            .team-photo-caption h4 {
+                font-size: 1rem;
+            }
+
+            .lightbox {
+                padding: 1rem;
+            }
+
+            .lightbox-img {
+                max-width: 100%;
+                max-height: 85vh;
+            }
+
+            .lightbox-close {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                top: 12px;
+                right: 12px;
             }
         }
 
@@ -1164,6 +1163,9 @@
         <div class="nav-container">
             <a href="#inicio" class="logo">🏥 MAIS El Salvador</a>
 
+            <!-- Botón de tema (siempre visible) -->
+            <button class="theme-toggle" id="themeToggle" title="Cambiar modo" style="margin-left:auto;">🌙</button>
+
             <!-- Botón hamburguesa (solo móvil) -->
             <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
 
@@ -1178,7 +1180,6 @@
                 <li><a href="#mejoras">Mejoras</a></li>
                 <li><a href="#galeria">Galería</a></li>
                 <li><a href="#conclusion">Conclusión</a></li>
-                <li><button class="theme-toggle" id="themeToggle" title="Cambiar modo">🌙</button></li>
             </ul>
         </div>
     </nav>
@@ -1413,44 +1414,43 @@
                 </p>
 
                 <h3>Instituciones bajo Rectoría del MINSAL</h3>
-      <h3>Instituciones bajo Rectoría del MINSAL</h3>
-<div class="grid-3" style="margin-top:1rem;">
-    <div class="card logo-card">
-        <div class="logo-img-wrapper">
-            <img src="Images/ISSS.jpeg" alt="Logo ISSS" class="inst-logo">
-        </div>
-        <h3>ISSS</h3>
-        <p>Instituto Salvadoreño del Seguro Social</p>
-    </div>
-    <div class="card logo-card">
-        <div class="logo-img-wrapper">
-            <img src="Images/Fosalud.jpeg" alt="Logo FOSALUD" class="inst-logo">
-        </div>
-        <h3>FOSALUD</h3>
-        <p>Fondo Solidario para la Salud</p>
-    </div>
-    <div class="card logo-card">
-        <div class="logo-img-wrapper">
-            <img src="Images/SM.jpeg" alt="Logo Sanidad Militar" class="inst-logo">
-        </div>
-        <h3>Sanidad Militar</h3>
-        <p>Servicios de salud de las Fuerzas Armadas</p>
-    </div>
-    <div class="card logo-card">
-        <div class="logo-img-wrapper">
-            <img src="Images/ISRI.jpeg" alt="Logo ISRI" class="inst-logo">
-        </div>
-        <h3>ISRI</h3>
-        <p>Instituto Salvadoreño de Rehabilitación Integral</p>
-    </div>
-    <div class="card logo-card">
-        <div class="logo-img-wrapper">
-            <img src="Images/ISBM.jpeg" alt="Logo ISBM" class="inst-logo">
-        </div>
-        <h3>ISBM</h3>
-        <p>Instituto Salvadoreño de Bienestar Magisterial</p>
-    </div>
-</div>
+                <div class="grid-3" style="margin-top:1rem;">
+                    <div class="card logo-card">
+                        <div class="logo-img-wrapper">
+                            <img src="Images/ISSS.jpeg" alt="Logo ISSS" class="inst-logo">
+                        </div>
+                        <h3>ISSS</h3>
+                        <p>Instituto Salvadoreño del Seguro Social</p>
+                    </div>
+                    <div class="card logo-card">
+                        <div class="logo-img-wrapper">
+                            <img src="Images/Fosalud.jpeg" alt="Logo FOSALUD" class="inst-logo">
+                        </div>
+                        <h3>FOSALUD</h3>
+                        <p>Fondo Solidario para la Salud</p>
+                    </div>
+                    <div class="card logo-card">
+                        <div class="logo-img-wrapper">
+                            <img src="Images/SM.jpeg" alt="Logo Sanidad Militar" class="inst-logo">
+                        </div>
+                        <h3>Sanidad Militar</h3>
+                        <p>Servicios de salud de las Fuerzas Armadas</p>
+                    </div>
+                    <div class="card logo-card">
+                        <div class="logo-img-wrapper">
+                            <img src="Images/ISRI.jpeg" alt="Logo ISRI" class="inst-logo">
+                        </div>
+                        <h3>ISRI</h3>
+                        <p>Instituto Salvadoreño de Rehabilitación Integral</p>
+                    </div>
+                    <div class="card logo-card">
+                        <div class="logo-img-wrapper">
+                            <img src="Images/ISBM.jpeg" alt="Logo ISBM" class="inst-logo">
+                        </div>
+                        <h3>ISBM</h3>
+                        <p>Instituto Salvadoreño de Bienestar Magisterial</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1746,63 +1746,55 @@
     </section>
 
     <!-- ============ GALERÍA ============ -->
-<section id="galeria" class="section">
-    <div class="container">
-        <h2 class="section-title">Galería del Proyecto</h2>
+    <section id="galeria" class="section">
+        <div class="container">
+            <h2 class="section-title">Galería del Proyecto</h2>
 
-        <div class="gallery-grid">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="Images/Imagen 1.jpeg" alt="Imagen 1" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h4>MAIS</h4>
+                    </div>
+                </div>
 
-            <!-- ══════════ IMAGEN 1 ══════════ -->
-            <div class="gallery-item">
-                <img src="Images/Imagen 1.jpeg" alt="Imagen 1" class="gallery-img">
-                <div class="gallery-caption">
-                    <h4>MAIS</h4>
+                <div class="gallery-item">
+                    <img src="Images/imagen 2.png" alt="Imagen 2" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h4>Niveles del MAIS</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Images/imagen 3.png" alt="Imagen 3" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h4>Hitos internacionales</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Images/imagen 4.png" alt="Imagen 4" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h4>Evolución sanitaria de El Salvador</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Images/imagen 5.jpg" alt="Imagen 5" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h4>Atención Integral de un paciente</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Images/imagen 6.png" alt="Imagen 6" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h4>MAIS</h4>
+                    </div>
                 </div>
             </div>
-
-            <!-- ══════════ IMAGEN 2 ══════════ -->
-            <div class="gallery-item">
-                <img src="Images/imagen 2.png" alt="Imagen 2" class="gallery-img">
-                <div class="gallery-caption">
-                    <h4>Niveles del MAIS</h4>
-                </div>
-            </div>
-
-            <!-- ══════════ IMAGEN 3 ══════════ -->
-            <div class="gallery-item">
-                <img src="Images/imagen 3.png" alt="Imagen 3" class="gallery-img">
-                <div class="gallery-caption">
-                    <h4>Hitos internacionales</h4>
-                </div>
-            </div>
-
-            <!-- ══════════ IMAGEN 4 ══════════ -->
-            <div class="gallery-item">
-                <img src="Images/imagen 4.png" alt="Imagen 4" class="gallery-img">
-                <div class="gallery-caption">
-                    <h4>Evolucion sanitaria de El Salvador</h4>
-                </div>
-            </div>
-
-            <!-- ══════════ IMAGEN 5 ══════════ -->
-            <div class="gallery-item">
-                <img src="Images/imagen 5.jpg" alt="Imagen 5" class="gallery-img">
-                <div class="gallery-caption">
-                    <h4>Atencion Integral de un paciente</h4>
-                </div>
-            </div>
-
-            <!-- ══════════ IMAGEN 6 ══════════ -->
-            <div class="gallery-item">
-                <img src="Images/imagen 6.png" alt="Imagen 6" class="gallery-img">
-                <div class="gallery-caption">
-                    <h4>MAIS</h4>
-                </div>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- ============ CONCLUSIONES ============ -->
     <section id="conclusion" class="section alt-bg">
@@ -1869,26 +1861,24 @@
         </div>
     </section>
 
-
-
     <!-- ============ EQUIPO B07 ============ -->
-<section id="equipo" class="section">
-    <div class="container">
-        <h2 class="section-title">Grupo B-07</h2>
+    <section id="equipo" class="section">
+        <div class="container">
+            <h2 class="section-title">Grupo B-07</h2>
 
-        <div class="team-photo">
-            <img src="Images/b7.png" alt="Grupo B-07" class="team-group-img">
-            <div class="team-photo-caption">
-                <h4>Grupo B-07 · Seminario Estrategias de la Atención Primaria en Salud · Ciclo II-2026</h4>
-                <p>
-                    Estudiantes de la Facultad de Medicina de la Universidad de El Salvador de la Materia de EAPS Grupo B-07 (De izquierda a derecha subgrupos 01, 02, 03, 04) que participaron 
-                    en la elaboración de esta investigación sobre el Modelo de Atención en Salud Integral en El Salvador, 
-                    bajo la tutoría del Dr. Víctor Arturo López.
-                </p>
+            <div class="team-photo">
+                <img src="Images/b7.png" alt="Grupo B-07" class="team-group-img">
+                <div class="team-photo-caption">
+                    <h4>Grupo B-07 · Seminario Estrategias de la Atención Primaria en Salud · Ciclo II-2026</h4>
+                    <p>
+                        Estudiantes de la Facultad de Medicina de la Universidad de El Salvador de la Materia de EAPS Grupo B-07 (De izquierda a derecha subgrupos 01, 02, 03, 04) que participaron 
+                        en la elaboración de esta investigación sobre el Modelo de Atención en Salud Integral en El Salvador, 
+                        bajo la tutoría del Dr. Víctor Arturo López.
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- ============ FOOTER ============ -->
     <footer class="footer">
@@ -1901,11 +1891,13 @@
     <!-- ============ BOTÓN VOLVER ARRIBA ============ -->
     <a href="#inicio" class="back-to-top" id="backTop" title="Volver arriba">↑</a>
 
+    <!-- ============ LIGHTBOX ============ -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">✕</button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Imagen ampliada">
+    </div>
+
     <script>
-        <!-- ============ LIGHTBOX ============ -->
-<div id="lightbox" class="lightbox">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">✕</button>
-    <img id="lightboxImg" class="lightbox-img" src="" alt="Imagen ampliada">
         // ============ MODO OSCURO / CLARO ============
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
@@ -1964,48 +1956,47 @@
         });
 
         // ============ LIGHTBOX ============
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightboxImg');
-const lightboxClose = document.getElementById('lightboxClose');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
 
-// Aplica cursor de zoom a todas las imágenes relevantes
-document.querySelectorAll('.inst-logo, .gallery-img, .team-group-img').forEach(img => {
-    img.addEventListener('click', (e) => {
-        e.stopPropagation();
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt || 'Imagen ampliada';
-        lightbox.classList.add('open');
-        document.body.style.overflow = 'hidden';
-    });
-});
+        // Aplica cursor de zoom a todas las imágenes relevantes
+        document.querySelectorAll('.inst-logo, .gallery-img, .team-group-img').forEach(img => {
+            img.addEventListener('click', (e) => {
+                e.stopPropagation();
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt || 'Imagen ampliada';
+                lightbox.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        });
 
-// Cerrar con la X
-lightboxClose.addEventListener('click', cerrarLightbox);
+        // Cerrar con la X
+        lightboxClose.addEventListener('click', cerrarLightbox);
 
-// Cerrar al hacer clic afuera de la imagen
-lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-        cerrarLightbox();
-    }
-});
+        // Cerrar al hacer clic afuera de la imagen
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                cerrarLightbox();
+            }
+        });
 
-// Cerrar al hacer clic en la imagen ampliada
-lightboxImg.addEventListener('click', cerrarLightbox);
+        // Cerrar al hacer clic en la imagen ampliada
+        lightboxImg.addEventListener('click', cerrarLightbox);
 
-// Cerrar con tecla Esc
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.classList.contains('open')) {
-        cerrarLightbox();
-    }
-});
+        // Cerrar con tecla Esc
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+                cerrarLightbox();
+            }
+        });
 
-function cerrarLightbox() {
-    lightbox.classList.remove('open');
-    document.body.style.overflow = '';
-    setTimeout(() => { lightboxImg.src = ''; }, 250);
-}
+        function cerrarLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+            setTimeout(() => { lightboxImg.src = ''; }, 250);
+        }
     </script>
 
-</div>
 </body>
 </html>
